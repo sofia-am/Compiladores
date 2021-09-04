@@ -1,7 +1,7 @@
 grammar SyntaxAnalyzer;
 
 @header{
-    package src/main/java/compiladores;
+    package variables;
 }
 
 //reglas lexicas

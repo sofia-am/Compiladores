@@ -3,7 +3,8 @@
 #*
 target
 .antlr
-compilador*.java
+.interp
+SyntaxAnalyzerLexer*.java
 *.out
 *.class
 *.jar
