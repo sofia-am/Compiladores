@@ -1,4 +1,4 @@
-// Generated from /home/juanmagil/MEGA/Facultad/Compiladores/TP_Variables/Compiladores/src/main/java/variables/SyntaxAnalyzer.g4 by ANTLR 4.8
+// Generated from c:\Users\sofia\Compiladores\Compiladores\Nueva carpeta\Compiladores\src\main\java\variables\SyntaxAnalyzer.g4 by ANTLR 4.8
 
     package variables;
 

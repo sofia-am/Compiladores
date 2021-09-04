@@ -1,3 +1,6 @@
-int prueba = 0;
-char a,b,c;
-double prueba, prueba2 = 1;
+
+int x;
+double x = y;
+char a, b, c;
+int x = 5, y, z = x, w;
+double x = 7.3;

@@ -1,4 +1,4 @@
-// Generated from /home/juanmagil/MEGA/Facultad/Compiladores/TP_Variables/Compiladores/src/main/java/variables/SyntaxAnalyzer.g4 by ANTLR 4.8
+// Generated from c:\Users\sofia\Compiladores\Compiladores\Nueva carpeta\Compiladores\src\main\java\variables\SyntaxAnalyzer.g4 by ANTLR 4.8
 
     package variables;
 
@@ -19,7 +19,7 @@ public class SyntaxAnalyzerParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		COMA=1, IGUAL=2, PYC=3, UNDERSCORE=4, TIPO=5, ID=6, ASIGNACION=7;
+		WS=1, COMA=2, IGUAL=3, PYC=4, UNDERSCORE=5, TIPO=6, ID=7, ASIGNACION=8;
 	public static final int
 		RULE_programa = 0, RULE_instrucciones = 1, RULE_instruccion = 2, RULE_declaracion = 3, 
 		RULE_secvar = 4, RULE_comvar = 5, RULE_var = 6;
@@ -33,13 +33,13 @@ public class SyntaxAnalyzerParser extends Parser {
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, "','", "'='", "';'", "'_'"
+			null, null, "','", "'='", "';'", "'_'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, "COMA", "IGUAL", "PYC", "UNDERSCORE", "TIPO", "ID", "ASIGNACION"
+			null, "WS", "COMA", "IGUAL", "PYC", "UNDERSCORE", "TIPO", "ID", "ASIGNACION"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -121,12 +121,25 @@ public class SyntaxAnalyzerParser extends Parser {
 		ProgramaContext _localctx = new ProgramaContext(_ctx, getState());
 		enterRule(_localctx, 0, RULE_programa);
 		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(14);
-			instrucciones();
-			setState(15);
-			match(EOF);
+			setState(16);
+			_errHandler.sync(this);
+			switch (_input.LA(1)) {
+			case TIPO:
+				enterOuterAlt(_localctx, 1);
+				{
+				setState(14);
+				instrucciones();
+				}
+				break;
+			case EOF:
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(15);
+				match(EOF);
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
 			}
 		}
 		catch (RecognitionException re) {
@@ -144,8 +157,8 @@ public class SyntaxAnalyzerParser extends Parser {
 		public InstruccionContext instruccion() {
 			return getRuleContext(InstruccionContext.class,0);
 		}
-		public InstruccionesContext instrucciones() {
-			return getRuleContext(InstruccionesContext.class,0);
+		public ProgramaContext programa() {
+			return getRuleContext(ProgramaContext.class,0);
 		}
 		public InstruccionesContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -172,10 +185,10 @@ public class SyntaxAnalyzerParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(17);
-			instruccion();
 			setState(18);
-			instrucciones();
+			instruccion();
+			setState(19);
+			programa();
 			}
 		}
 		catch (RecognitionException re) {
@@ -218,7 +231,7 @@ public class SyntaxAnalyzerParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(20);
+			setState(21);
 			declaracion();
 			}
 		}
@@ -264,11 +277,11 @@ public class SyntaxAnalyzerParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(22);
-			match(TIPO);
 			setState(23);
-			secvar();
+			match(TIPO);
 			setState(24);
+			secvar();
+			setState(25);
 			match(PYC);
 			}
 		}
@@ -313,20 +326,20 @@ public class SyntaxAnalyzerParser extends Parser {
 		SecvarContext _localctx = new SecvarContext(_ctx, getState());
 		enterRule(_localctx, 8, RULE_secvar);
 		try {
-			setState(28);
+			setState(29);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,0,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,1,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(26);
+				setState(27);
 				comvar();
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(27);
+				setState(28);
 				var();
 				}
 				break;
@@ -376,21 +389,21 @@ public class SyntaxAnalyzerParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(30);
+			setState(31);
 			match(ID);
-			setState(32);
+			setState(33);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==ASIGNACION) {
 				{
-				setState(31);
+				setState(32);
 				match(ASIGNACION);
 				}
 			}
 
-			setState(34);
-			match(COMA);
 			setState(35);
+			match(COMA);
+			setState(36);
 			secvar();
 			}
 		}
@@ -434,14 +447,14 @@ public class SyntaxAnalyzerParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(37);
+			setState(38);
 			match(ID);
-			setState(39);
+			setState(40);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==ASIGNACION) {
 				{
-				setState(38);
+				setState(39);
 				match(ASIGNACION);
 				}
 			}
@@ -460,17 +473,17 @@ public class SyntaxAnalyzerParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\t,\4\2\t\2\4\3\t"+
-		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\3\2\3\2\3\2\3\3\3\3\3\3\3\4"+
-		"\3\4\3\5\3\5\3\5\3\5\3\6\3\6\5\6\37\n\6\3\7\3\7\5\7#\n\7\3\7\3\7\3\7\3"+
-		"\b\3\b\5\b*\n\b\3\b\2\2\t\2\4\6\b\n\f\16\2\2\2\'\2\20\3\2\2\2\4\23\3\2"+
-		"\2\2\6\26\3\2\2\2\b\30\3\2\2\2\n\36\3\2\2\2\f \3\2\2\2\16\'\3\2\2\2\20"+
-		"\21\5\4\3\2\21\22\7\2\2\3\22\3\3\2\2\2\23\24\5\6\4\2\24\25\5\4\3\2\25"+
-		"\5\3\2\2\2\26\27\5\b\5\2\27\7\3\2\2\2\30\31\7\7\2\2\31\32\5\n\6\2\32\33"+
-		"\7\5\2\2\33\t\3\2\2\2\34\37\5\f\7\2\35\37\5\16\b\2\36\34\3\2\2\2\36\35"+
-		"\3\2\2\2\37\13\3\2\2\2 \"\7\b\2\2!#\7\t\2\2\"!\3\2\2\2\"#\3\2\2\2#$\3"+
-		"\2\2\2$%\7\3\2\2%&\5\n\6\2&\r\3\2\2\2\')\7\b\2\2(*\7\t\2\2)(\3\2\2\2)"+
-		"*\3\2\2\2*\17\3\2\2\2\5\36\")";
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\n-\4\2\t\2\4\3\t"+
+		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\3\2\3\2\5\2\23\n\2\3\3\3\3"+
+		"\3\3\3\4\3\4\3\5\3\5\3\5\3\5\3\6\3\6\5\6 \n\6\3\7\3\7\5\7$\n\7\3\7\3\7"+
+		"\3\7\3\b\3\b\5\b+\n\b\3\b\2\2\t\2\4\6\b\n\f\16\2\2\2)\2\22\3\2\2\2\4\24"+
+		"\3\2\2\2\6\27\3\2\2\2\b\31\3\2\2\2\n\37\3\2\2\2\f!\3\2\2\2\16(\3\2\2\2"+
+		"\20\23\5\4\3\2\21\23\7\2\2\3\22\20\3\2\2\2\22\21\3\2\2\2\23\3\3\2\2\2"+
+		"\24\25\5\6\4\2\25\26\5\2\2\2\26\5\3\2\2\2\27\30\5\b\5\2\30\7\3\2\2\2\31"+
+		"\32\7\b\2\2\32\33\5\n\6\2\33\34\7\6\2\2\34\t\3\2\2\2\35 \5\f\7\2\36 \5"+
+		"\16\b\2\37\35\3\2\2\2\37\36\3\2\2\2 \13\3\2\2\2!#\7\t\2\2\"$\7\n\2\2#"+
+		"\"\3\2\2\2#$\3\2\2\2$%\3\2\2\2%&\7\4\2\2&\'\5\n\6\2\'\r\3\2\2\2(*\7\t"+
+		"\2\2)+\7\n\2\2*)\3\2\2\2*+\3\2\2\2+\17\3\2\2\2\6\22\37#*";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
