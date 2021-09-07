@@ -20,7 +20,7 @@ UNDERSCORE : '_';
 TIPO : INT | DOUBLE | CHAR;
 ID : (LETRA | UNDERSCORE) (LETRA | DIGITO)*;
 //asignacion compone todos los tokens que se utilizan al declarar una variable
-ASIGNACION : IGUAL ' ' (LETRA | (DIGITO+ '.' DIGITO+) | DIGITO+) ;
+ASIGNACION : IGUAL ' ' '-'? ' '? (LETRA | (DIGITO+ '.' DIGITO+) | DIGITO+) ;
 
 
 programa : instrucciones  EOF     
@@ -30,7 +30,7 @@ instrucciones : instruccion instrucciones
               ; 
 instruccion : declaracion
             ;
-            
+
 declaracion : TIPO secvar PYC ; 
 secvar : comvar  
        | var;      
