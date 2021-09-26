@@ -1,9 +1,9 @@
-package variables;
+package compiler.analizador_semantico;
 
 /**Variables del programa*/
 public class Variable extends Id {
 
-    Variable(TipoDato tipo, String nombre, Boolean inicializado, Boolean usado) {
+    public Variable(TipoDato tipo, String nombre, Boolean inicializado, Boolean usado) {
         super.tipo = tipo;
         super.nombre = nombre;
         super.inicializado = inicializado;

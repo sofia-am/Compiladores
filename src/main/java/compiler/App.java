@@ -1,6 +1,11 @@
-package variables;
+package compiler;
 
 import org.antlr.v4.runtime.tree.ParseTree;
+
+import compiler.analizador_semantico.Funcion;
+import compiler.analizador_semantico.TablaSimbolos;
+import compiler.analizador_semantico.TipoDato;
+import compiler.analizador_semantico.Variable;
 
 import java.io.IOException;
 import java.util.ArrayList;

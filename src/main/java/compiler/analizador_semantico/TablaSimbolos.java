@@ -1,4 +1,4 @@
-package variables;
+package compiler.analizador_semantico;
 
 import java.util.*;
 

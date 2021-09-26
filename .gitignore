@@ -5,6 +5,11 @@ target
 .antlr
 .interp
 SyntaxAnalyzerLexer*.java
+SyntaxAnalyzerListener*
+SyntaxAnalyzerBaseListener*
+SyntaxAnalyzerBaseVisitor*
+SyntaxAnalyzerParser*
+SyntaxAnalyzerVisitor*
 *.out
 *.class
 *.jar

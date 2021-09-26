@@ -1,7 +1,7 @@
 grammar SyntaxAnalyzer;
 
 @header{
-    package variables;
+    package compiler.antlr_files;
 }
 
 //reglas lexicas

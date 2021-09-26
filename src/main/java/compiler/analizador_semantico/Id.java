@@ -1,4 +1,4 @@
-package variables;
+package compiler.analizador_semantico;
 
 /** Id que define el usuario para sus variables o funciones, es abstracta asi no la puedo instanciar*/
 public abstract class Id {

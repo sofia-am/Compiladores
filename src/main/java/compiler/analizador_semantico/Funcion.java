@@ -1,4 +1,4 @@
-package variables;
+package compiler.analizador_semantico;
 
 import java.util.*;
 
@@ -9,7 +9,7 @@ public class Funcion extends Id {
     private List<TipoDato> args;
     private TipoDato retorno; 
 
-    Funcion(TipoDato retorno, String nombre, List<TipoDato> args, Boolean inicializado, Boolean usado) {
+    public Funcion(TipoDato retorno, String nombre, List<TipoDato> args, Boolean inicializado, Boolean usado) {
         this.retorno = retorno;
         super.nombre = nombre;        
         this.args = args;
