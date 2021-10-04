@@ -7,10 +7,9 @@ import java.util.*;
 public class Funcion extends Id {
     /*No se si se va a usar el retorno, porque creo que no lo pide, pero por las dudas lo dejo */
     private List<TipoDato> args;
-    private TipoDato retorno; 
 
-    public Funcion(TipoDato retorno, String nombre, List<TipoDato> args, Boolean inicializado, Boolean usado) {
-        this.retorno = retorno;
+    public Funcion(TipoDato tipo, String nombre, List<TipoDato> args, Boolean inicializado, Boolean usado) {
+        super.tipo = tipo;
         super.nombre = nombre;        
         this.args = args;
         super.inicializado = inicializado;        
@@ -18,7 +17,7 @@ public class Funcion extends Id {
     }
 
     public TipoDato getRetorno() {
-        return retorno;
+        return tipo;
     }
 
     public List<TipoDato> getArgs() {
@@ -27,7 +26,7 @@ public class Funcion extends Id {
 
     @Override
     public String toString() {
-        return retorno.name() + " " + getNombre() + " " + getArgs().toString() + " inicializado: " 
+        return tipo.name() + " " + getNombre() + " " + getArgs().toString() + " inicializado: " 
         + getInicializado().toString() + " usado: " + getUsado().toString();
     }
 }

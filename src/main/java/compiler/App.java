@@ -6,6 +6,8 @@ import compiler.analizador_semantico.Funcion;
 import compiler.analizador_semantico.TablaSimbolos;
 import compiler.analizador_semantico.TipoDato;
 import compiler.analizador_semantico.Variable;
+import compiler.antlr_files.SyntaxAnalyzerLexer;
+import compiler.antlr_files.SyntaxAnalyzerParser;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,7 +23,7 @@ public class App
     public static void main( String[] args ) throws IOException
     {
         /* ================================TEST ZONE ================================== */
-
+        /*
         // chequeo que tengan el mismo id de objeto para asegurarme que funciona el singletone
         TablaSimbolos tablaSimbolos = TablaSimbolos.getInstanceOf();
         System.out.println(tablaSimbolos);
@@ -50,12 +52,12 @@ public class App
         tablaSimbolos.addSimbolo(var2);
 
         System.out.println(tablaSimbolos.buscarSimbolo(var2).toString() + " " + tablaSimbolos.buscarSimboloLocal(var).toString());
-        
+        */
         /* =============================END TEST ZONE ================================= */
 
         //===============================ANTLR ZONE ======================================
         
-        /* 
+        
         CharStream input = CharStreams.fromFileName("src/entrada.txt");
         // create a lexer that feeds off of input CharStream
         SyntaxAnalyzerLexer lexer = new  SyntaxAnalyzerLexer(input);
@@ -67,7 +69,6 @@ public class App
         SyntaxAnalyzerParser parser = new SyntaxAnalyzerParser(tokens);
 
         parser.programa();
-        */
 
         //=============================END ANTLR ZONE ======================================
     }

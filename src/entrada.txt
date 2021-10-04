@@ -1,6 +1,6 @@
 
 int x;
-double x = - y;
+double x = y;
 char a, b, c;
 int x = 5, y, z = x, w;
 double x = -7.3;

@@ -8,8 +8,8 @@ public abstract class Id {
 
     protected String nombre;
     protected TipoDato tipo;
-    protected Boolean inicializado;
-    protected Boolean usado;
+    protected Boolean inicializado = false;
+    protected Boolean usado = false;
     
     public void setNombre(String nombre) {
         this.nombre = nombre;
