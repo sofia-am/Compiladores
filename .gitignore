@@ -14,3 +14,4 @@ SyntaxAnalyzerVisitor*
 *.class
 *.jar
 *.tokens
+*.interp
