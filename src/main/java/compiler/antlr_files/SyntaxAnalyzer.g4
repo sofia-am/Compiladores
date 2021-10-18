@@ -1,4 +1,3 @@
-
 grammar SyntaxAnalyzer;
 
 @header{
@@ -73,8 +72,8 @@ instrucciones : instruccion instrucciones
               ; 
 
 instruccion : TIPOV secvar PYC
-            | expresion
-            | ciclo
+            | expr_logica
+            | condicional
             ;
 
 secvar : dec_var  
@@ -91,25 +90,35 @@ com_dec_var : ID COMA secvar; //cuando se declara una combinacion de variables
 
 dec_var : ID;
 
-expresion: PA expresion PC
-       | NOT expresion
-       | expresion aritm expresion
-       | expresion logica expresion
+comparador: MAYQ | MENQ | MAYIG | MENIG | IGUAL ;
+
+condicional
+       : FOR PA expr_logica PC LLAVEA instrucciones LLAVEC 
+       | WHILE PA expr_logica PC LLAVEA instrucciones LLAVEC
+       | IF PA expr_logica PC LLAVEA instrucciones LLAVEC
+       ;
+
+expr_logica
+       : expr_logica AND expr_logica
+       | expr_logica OR expr_logica
+       | expr_compar 
+       | PA expr_logica PC
        | ID
        | DIGITO
-       |                                 //hay que considerar el caso de la declaracion de una variable
        ;
 
-aritm: SUMA | RESTA | MULT | DIV;
-
-logica: AND | OR | MAYQ | MENQ | MAYIG | MENIG | IGUAL ;
-
-ciclo:   FOR PA expresion PC LLAVEA instrucciones LLAVEC 
-       | WHILE PA expresion PC LLAVEA instrucciones LLAVEC
-       | IF PA expresion PC LLAVEA instrucciones LLAVEC
+expr_compar
+       : expr_aritm comparador expr_aritm
+       | PA expr_compar PC
        ;
 
-/*     if(expresion){
-              instrucciones
-       }
- */
+expr_aritm
+       : expr_aritm MULT expr_aritm
+       | expr_aritm DIV expr_aritm
+       | expr_aritm SUMA expr_aritm
+       | expr_aritm RESTA expr_aritm
+       | RESTA expr_aritm
+       | PA expr_aritm PC
+       | ID
+       | DIGITO
+       ;
