@@ -4,7 +4,7 @@ grammar SyntaxAnalyzer;
     package compiler.antlr_files;
 }
 fragment LETRA : [A-Za-z] ;
-fragment DIGITO : [0-9];
+DIGITO : [0-9];
 fragment INT : 'int';
 fragment DOUBLE : 'double';
 fragment CHAR : 'char';
@@ -31,6 +31,7 @@ MAYQ: '>';
 MENQ: '<';
 MAYIG: '>=';
 MENIG: '<=';
+DISTINTO: '!=';
 
 IF: 'if';
 WHILE: 'while';
@@ -42,28 +43,6 @@ ID : (LETRA | UNDERSCORE) (LETRA | DIGITO)*;
 //asignacion compone todos los tokens que se utilizan al declarar una variable
 ASIGNACION : IGUAL ' ' '-'? ' '? (LETRA | (DIGITO+ '.' DIGITO+) | DIGITO+) ;
 
-/*
-programa : instrucciones  EOF     
-         ; 
-
-instrucciones : instruccion instrucciones
-              |  
-              ; 
-
-instruccion : declaracion | asignacion
-            ;
-
-declaracion : TIPOV secvar PYC ; 
-
-asignacion : secvar PYC;
-
-secvar : comvar  
-       | var;      
-
-comvar : ID ASIGNACION? COMA secvar; //cuando se declara una combinacion de variables
-
-var : ID ASIGNACION?;*/
-
 programa : instrucciones  EOF     
          ; 
 
@@ -72,6 +51,7 @@ instrucciones : instruccion instrucciones
               ; 
 
 instruccion : TIPOV secvar PYC
+            | expr_aritm
             | expr_logica
             | condicional
             ;
@@ -90,7 +70,7 @@ com_dec_var : ID COMA secvar; //cuando se declara una combinacion de variables
 
 dec_var : ID;
 
-comparador: MAYQ | MENQ | MAYIG | MENIG | IGUAL ;
+comparador: MAYQ | MENQ | MAYIG | MENIG | IGUAL | DISTINTO;
 
 condicional
        : FOR PA expr_logica PC LLAVEA instrucciones LLAVEC 
@@ -99,10 +79,13 @@ condicional
        ;
 
 expr_logica
-       : expr_logica AND expr_logica
-       | expr_logica OR expr_logica
+       : expr_logica (AND|OR) expr_logica
+       | NOT expr_logica (AND|OR) expr_logica
+       | expr_logica (AND|OR) NOT expr_logica
+       | NOT expr_logica (AND|OR) NOT expr_logica
        | expr_compar 
        | PA expr_logica PC
+       | NOT PA expr_logica PC
        | ID
        | DIGITO
        ;
@@ -119,6 +102,7 @@ expr_aritm
        | expr_aritm RESTA expr_aritm
        | RESTA expr_aritm
        | PA expr_aritm PC
+       | NOT PA expr_aritm PC
        | ID
        | DIGITO
        ;

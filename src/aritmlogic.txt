@@ -1,7 +1,21 @@
 char c;
 if(a&&b){
-    
+   while (a || b) {
+
+   } 
 }
-!a+b
+while (a!=b){
+
+}
+if(!(a&&d)) {
+
+}
+if (a&&!d){
+    while (!(a&&b)) {
+        1/2
+    }
+    a*c
+}
+!(a+b)
 a-c
-(!a)*b(2)
+

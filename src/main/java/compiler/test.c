@@ -1,10 +1,10 @@
 #include<stdio.h>
 
 int main() {
-    int a,b,c;
-    a = 1, b = 2, c = 3;
-    
-    printf("%d, %d, %d, %d", a,b,c);
+    int a,b,c,d;
+    a = 0, b = 2, c = 3, d = 0;
+    if (!(a+d)) printf("Entre al if\n");
+    //printf("%d, %d, %d, %d", a,b,c);
 }
 // Declaración var simple: TIPO ID;
 // Declaración var compuesta: TIPO (ID, ID, ...);
