@@ -3,6 +3,7 @@ grammar SyntaxAnalyzer;
 @header{
     package compiler.antlr_files;
 }
+
 fragment LETRA : [A-Za-z] ;
 DIGITO : [0-9];
 fragment INT : 'int';
@@ -15,8 +16,7 @@ COMA : ',';
 IGUAL : '=';
 PYC : ';' ;
 UNDERSCORE : '_';
-TIPOV : INT | DOUBLE | CHAR;
-TIPOF : VOID | TIPOV;
+TIPOD : VOID | INT | DOUBLE | CHAR;
 
 PA: '(';
 PC: ')';
@@ -40,41 +40,47 @@ WHILE: 'while';
 FOR: 'for';
 LLAVEA: '{';
 LLAVEC: '}';
+RETURN: 'return';
 
 ID : (LETRA | UNDERSCORE) (LETRA | DIGITO)*;
-//asignacion compone todos los tokens que se utilizan al declarar una variable
+
 FLOAT : DIGITO+'.'+DIGITO+;
 
 asignacion 
        : IGUAL expr_aritm;
-      // | (' ' '-'? ' '? (LETRA | (DIGITO+ '.' DIGITO+) | DIGITO+));
 
-programa : instrucciones  EOF     
+programa : instrucciones  EOF
          ; 
 
 instrucciones : instruccion instrucciones
               |  
               ; 
 
-instruccion :
-       (TIPOV secvar 
+instruccion : 
+         TIPOD secvar 
        | secvar 
-       | condicional)
+       | condicional
+       | funcion
+       | bloque
        ;
+
+bloque: LLAVEA instrucciones LLAVEC;
+
+funcion: TIPOD ID PA parametro* PC (bloque* | PYC*) ;
+
+return: RETURN (ID | DIGITO)* PYC;
+
+parametro: TIPOD ID (COMA parametro)*;
 
 secvar : 
        (dec_var  
-       | asg_var)
-//       | com_dec_var
-//       | com_asg_var
+       | asg_var )
        (COMA secvar)*
        PYC*
        ;  
 
-//com_asg_var : asg_var secvar;
 asg_var : ID asignacion;
 
-//com_dec_var : ID COMA secvar; //cuando se declara una combinacion de variables
 dec_var : ID;
 
 comparador: MAYQ | MENQ | MAYIG | MENIG | IGUAL | DISTINTO | IGUALLOG;
@@ -88,12 +94,8 @@ condicional
 
 expr_logica
        : expr_logica (AND|OR) expr_logica
-//       | NOT expr_logica (AND|OR) expr_logica
-//       | expr_logica (AND|OR) NOT expr_logica
-//       | NOT expr_logica (AND|OR) NOT expr_logica
        | expr_compar 
        | PA expr_logica PC
-//       | NOT PA expr_logica PC
        | ID
        | DIGITO
        | NOT expr_logica
@@ -118,5 +120,3 @@ expr_aritm
        | FLOAT
        PYC*
        ;
-////     | (' ' '-'? ' '? (LETRA | (DIGITO+ '.' DIGITO+) | DIGITO+)) 
-       
