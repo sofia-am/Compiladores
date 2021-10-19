@@ -33,7 +33,7 @@ MAYIG: '>=';
 MENIG: '<=';
 DISTINTO: '!=';
 IGUALLOG: '=='; 
-RETORNO: 'return'; //antlr culiaaaa
+RETORNO: 'return'; 
 IF: 'if';
 ELSE: 'else';
 WHILE: 'while';
