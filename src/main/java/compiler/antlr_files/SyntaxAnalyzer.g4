@@ -71,12 +71,10 @@ secvar :
        PYC*
        ;  
 
-com_asg_var : asg_var secvar;
-
+//com_asg_var : asg_var secvar;
 asg_var : ID asignacion;
 
-com_dec_var : ID COMA secvar; //cuando se declara una combinacion de variables
-
+//com_dec_var : ID COMA secvar; //cuando se declara una combinacion de variables
 dec_var : ID;
 
 comparador: MAYQ | MENQ | MAYIG | MENIG | IGUAL | DISTINTO | IGUALLOG;
