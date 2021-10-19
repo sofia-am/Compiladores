@@ -32,8 +32,10 @@ MENQ: '<';
 MAYIG: '>=';
 MENIG: '<=';
 DISTINTO: '!=';
+IGUALLOG: '=='; 
 
 IF: 'if';
+ELSE: 'else';
 WHILE: 'while';
 FOR: 'for';
 LLAVEA: '{';
@@ -56,10 +58,8 @@ instrucciones : instruccion instrucciones
 
 instruccion :
        (TIPOV secvar 
-       | expr_aritm 
-       | expr_logica 
-       | condicional )
-       PYC*
+       | secvar 
+       | condicional)
        ;
 
 secvar : 
@@ -68,6 +68,7 @@ secvar :
 //       | com_dec_var
 //       | com_asg_var
        (COMA secvar)*
+       PYC*
        ;  
 
 com_asg_var : asg_var secvar;
@@ -78,12 +79,13 @@ com_dec_var : ID COMA secvar; //cuando se declara una combinacion de variables
 
 dec_var : ID;
 
-comparador: MAYQ | MENQ | MAYIG | MENIG | IGUAL | DISTINTO;
+comparador: MAYQ | MENQ | MAYIG | MENIG | IGUAL | DISTINTO | IGUALLOG;
 
 condicional
-       : FOR PA expr_logica PC LLAVEA instrucciones LLAVEC 
-       | WHILE PA expr_logica PC LLAVEA instrucciones LLAVEC
-       | IF PA expr_logica PC LLAVEA instrucciones LLAVEC
+       : FOR PA expr_logica PC LLAVEA* instrucciones LLAVEC* 
+       | WHILE PA expr_logica PC LLAVEA* instrucciones LLAVEC*
+       | IF PA expr_logica PC LLAVEA* instrucciones LLAVEC*
+       | ELSE (PA expr_logica PC)* LLAVEA* instrucciones LLAVEC*
        ;
 
 expr_logica
@@ -97,6 +99,7 @@ expr_logica
        | ID
        | DIGITO
        | NOT expr_logica
+       | expr_logica PYC expr_logica
        ;
 
 expr_compar
@@ -112,9 +115,10 @@ expr_aritm
        | RESTA expr_aritm
        | PA expr_aritm PC
        | NOT PA expr_aritm PC
-       | ID //expr_aritm*
-       | DIGITO
+       | ID
+       | DIGITO+
        | FLOAT
+       PYC*
        ;
 ////     | (' ' '-'? ' '? (LETRA | (DIGITO+ '.' DIGITO+) | DIGITO+)) 
        
