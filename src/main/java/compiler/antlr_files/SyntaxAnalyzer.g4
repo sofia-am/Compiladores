@@ -66,7 +66,7 @@ instruccion
 
 retorno: RETORNO expr_aritm* PYC;
 
-bloque: LLAVEA instrucciones LLAVEC;
+bloque: LLAVEA* instrucciones LLAVEC*;
 
 funcion: TIPOD ID PA parametro* PC (bloque* | PYC*) ;
 
@@ -86,10 +86,10 @@ dec_var : ID;
 comparador: MAYQ | MENQ | MAYIG | MENIG | IGUAL | DISTINTO | IGUALLOG;
 
 condicional
-       : FOR PA expr_logica PC LLAVEA* instrucciones LLAVEC* 
-       | WHILE PA expr_logica PC LLAVEA* instrucciones LLAVEC*
-       | IF PA expr_logica PC LLAVEA* instrucciones LLAVEC*
-       | ELSE (PA expr_logica PC)* LLAVEA* instrucciones LLAVEC*
+       : FOR PA expr_logica PC bloque 
+       | WHILE PA expr_logica PC bloque
+       | IF PA expr_logica PC bloque
+       | ELSE (PA expr_logica PC)* bloque
        ;
 
 expr_logica
