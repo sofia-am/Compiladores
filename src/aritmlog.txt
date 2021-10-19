@@ -1,16 +1,13 @@
-int x;
-double x = y;
-char a, b, c;
-int x = 5, y, z = x, w;
-while (x < y) {
-    z = z + 5;
-    w = z;
-}
-for (x = 0; x < 10; x = x + 1)
-w = w + x;
-if (z == 0)
-    w = x;
-else {
-    w = z;
-    z = x;
-}
+void test1();
+void test2(char a, int b);
+void test3() { }
+int test4(char c, int a) { 
+    int a = c;
+    d = c;
+    if (b == a) {
+        e = a + c;
+    }
+    return a+b;
+    return a;
+ }
+

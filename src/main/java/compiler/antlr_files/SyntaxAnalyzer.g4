@@ -33,14 +33,13 @@ MAYIG: '>=';
 MENIG: '<=';
 DISTINTO: '!=';
 IGUALLOG: '=='; 
-
+RETORNO: 'return'; //antlr culiaaaa
 IF: 'if';
 ELSE: 'else';
 WHILE: 'while';
 FOR: 'for';
 LLAVEA: '{';
 LLAVEC: '}';
-RETURN: 'return';
 
 ID : (LETRA | UNDERSCORE) (LETRA | DIGITO)*;
 
@@ -56,19 +55,20 @@ instrucciones : instruccion instrucciones
               |  
               ; 
 
-instruccion : 
-         TIPOD secvar 
+instruccion
+       : TIPOD secvar 
+       | retorno
        | secvar 
        | condicional
        | funcion
        | bloque
        ;
 
+retorno: RETORNO expr_aritm* PYC;
+
 bloque: LLAVEA instrucciones LLAVEC;
 
 funcion: TIPOD ID PA parametro* PC (bloque* | PYC*) ;
-
-return: RETURN (ID | DIGITO)* PYC;
 
 parametro: TIPOD ID (COMA parametro)*;
 
