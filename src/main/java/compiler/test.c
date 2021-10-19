@@ -3,6 +3,7 @@
 int main() {
     int a,b,c,d;
     a = 0, b = 2, c = 3, d = 0;
+    int e = a+c;
     if (!(a+d)) printf("Entre al if\n");
     //printf("%d, %d, %d, %d", a,b,c);
 }

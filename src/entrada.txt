@@ -4,3 +4,23 @@ double x = y;
 char a, b, c;
 int x = 5, y, z = x, w;
 double x = -7.3;
+if(a&&b){
+   while (a || b) {
+
+   } 
+}
+while (a!=b){
+
+}
+if(!(a&&d)) {
+
+}
+if (a&&!d){
+    while (!(a&&b)) {
+        1/2
+    }
+    a*c
+}
+!(a+b)
+a-c
+
